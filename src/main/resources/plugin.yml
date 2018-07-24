@@ -1,0 +1,9 @@
+name: Wager
+author: Matthew
+description: Wager plugin
+version: 1.0
+main: com.moojm.wager.WagerPlugin
+depend: [Vault, Citizens]
+
+commands:
+  wager:
