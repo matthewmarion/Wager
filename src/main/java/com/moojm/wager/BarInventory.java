@@ -22,13 +22,8 @@ public class BarInventory {
     }
 
     private int getInventorySize() {
-        final int factors[] = {9, 18, 27, 36, 45, 54};
         int numberOfContents = Drink.getDrinks().size();
-        List<Integer> nums = Arrays.stream(factors).boxed().collect(Collectors.toList());
-        int closest = nums.stream()
-                .min(Comparator.comparingInt(i -> Math.abs(i - numberOfContents)))
-                .orElseThrow(() -> new NoSuchElementException("Could not match."));
-        return closest;
+        return (int) Math.ceil(numberOfContents / 9) * 9;
 
     }
 
