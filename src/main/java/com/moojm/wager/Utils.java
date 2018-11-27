@@ -5,7 +5,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import java.text.DecimalFormat;
 
-public class Utils {
+public final class Utils {
+
+    private Utils() {}
 
     public static String toColor(String context) {
         return ChatColor.translateAlternateColorCodes('&', context);
