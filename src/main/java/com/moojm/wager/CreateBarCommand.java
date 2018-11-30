@@ -13,14 +13,14 @@ public class CreateBarCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("wager.admin")) {
+        if (sender.hasPermission("wager.admin") == false) {
             return true;
         }
-        if (!(sender instanceof Player)) {
+        if ((sender instanceof Player) == false) {
             return true;
         }
         Player player = (Player) sender;
-        if (!args[0].equalsIgnoreCase("create")) {
+        if (args[0].equalsIgnoreCase("create") == false) {
             return false;
         }
         Location location = player.getLocation();

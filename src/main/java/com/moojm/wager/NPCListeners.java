@@ -15,7 +15,7 @@ public class NPCListeners implements Listener {
         NPC npc = event.getNPC();
         String npcName = ChatColor.stripColor(npc.getName());
         String bartenderName = ChatColor.stripColor(Utils.getColoredMessage("bartender-name"));
-        if (!(npcName).equals(bartenderName)) {
+        if ((npcName).equals(bartenderName) == false) {
             return;
         }
         BarInventory bar = new BarInventory();

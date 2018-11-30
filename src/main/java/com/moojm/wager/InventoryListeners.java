@@ -15,12 +15,12 @@ public class InventoryListeners implements Listener {
 
     @EventHandler
     public void on(InventoryClickEvent event) {
-        if (!(event.getWhoClicked() instanceof Player)) return;
+        if (event.getWhoClicked() instanceof Player == false) return;
         Inventory inv = event.getInventory();
-        if (!isBarInventory(inv)) return;
+        if (isBarInventory(inv) == false) return;
 
         ItemStack item = event.getCurrentItem();
-        if (!isValidClick(event, item)) return;
+        if (isValidClick(event, item) == false) return;
 
         Drink drink = Drink.getDrinkFromItemStack(item);
         if (drink == null) {
@@ -29,14 +29,14 @@ public class InventoryListeners implements Listener {
         }
 
         Player player = (Player) event.getWhoClicked();
-        if (!playerCanAfford(player, drink.getPrice())) {
+        if (playerCanAfford(player, drink.getPrice()) == false) {
             event.setCancelled(true);
             player.sendMessage(Utils.getColoredMessage("cant-afford"));
             return;
         }
 
         boolean didWin = drink.roll();
-        if (!didWin) {
+        if (didWin == false) {
             event.setCancelled(true);
             player.closeInventory();
             withdraw(player, drink.getPrice());
@@ -60,7 +60,7 @@ public class InventoryListeners implements Listener {
 
     private boolean deposit(Player player, double reward, double price) {
         EconomyResponse response = WagerPlugin.getEconomy().depositPlayer(player, reward - price);
-        if (!response.transactionSuccess()) {
+        if (response.transactionSuccess() == false) {
             player.sendMessage(Utils.getMessage("error"));
             player.sendMessage(Utils.toColor("&c" + response.errorMessage));
             return false;
@@ -70,7 +70,7 @@ public class InventoryListeners implements Listener {
 
     private boolean withdraw(Player player, double price) {
         EconomyResponse response = WagerPlugin.getEconomy().withdrawPlayer(player, price);
-        if (!response.transactionSuccess()) {
+        if (response.transactionSuccess() == false) {
             player.sendMessage(Utils.getMessage("error"));
             player.sendMessage(Utils.toColor("&c" + response.errorMessage));
             return false;
