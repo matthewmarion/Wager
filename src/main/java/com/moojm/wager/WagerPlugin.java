@@ -17,7 +17,7 @@ public class WagerPlugin extends JavaPlugin {
         plugin = this;
         getConfig().options().copyDefaults();
         saveDefaultConfig();
-        if (!setupEconomy() ) {
+        if (setupEconomy() == false) {
             Bukkit.getLogger().log(Level.SEVERE, Utils.toColor("&cNo economy dependency found. Disabling."));
             getServer().getPluginManager().disablePlugin(this);
             return;
