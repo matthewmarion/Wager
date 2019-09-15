@@ -3,7 +3,6 @@
 Wager is a gambling plugin for Minecraft. It allows players to create Bartenders that sell a variety of drinks that they configure.
 The inventory size scales depending on the amount of drinks you created in the config. All item metadata can be configured as well.
 
-![Showcase](https://i.imgur.com/wRuufpR.gif)
 
 ## Dependencies
 - Bukkit/Spigot
